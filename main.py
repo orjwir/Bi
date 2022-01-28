@@ -19,9 +19,15 @@ def echo_all(message):
     e3 = types.KeyboardButton(text="Прислать мем с котом")
     startKBoard.add(e1, e2, e3)
     bot.send_message(message.chat.id, "Что хочешь увидеть сегодня?", reply_markup=startKBoard)
-    """photo = open('a', 'e2')
-    photo = open('b', 'e1')
-    photo = open('c', 'e3')
 
-    bot.send_photo(message.chat_id, photo,"привет")"""
+photo1 = open('Девочка.jpg', 'e1')
+bot.send_photo(chat_id, photo1)
+photo2 = open('Кот.jfif', 'e2')
+bot.send_photo(chat_id, photo2)
+photo3 = open('котомем.jpeg', 'e3')
+bot.send_photo(chat_id, photo3)
+
+
+    bot.send_photo(message.chat_id, "привет")
+
 bot.polling()
