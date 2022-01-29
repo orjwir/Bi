@@ -13,21 +13,27 @@ def keyboard_start(message):
 
 @bot.message_handler(func=lambda m: m.text == 'Как дела?')
 def echo_all(message):
-    startKBoard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
-    e1 = types.KeyboardButton(text="Прислать мем")
-    e2 = types.KeyboardButton(text="Прислать кота")
-    e3 = types.KeyboardButton(text="Прислать мем с котом")
-    startKBoard.add(e1, e2, e3)
+    startKBoard = types.ReplyKeyboardMarkup(row_width=1 , resize_keyboard=True)
+    e1 = types.KeyboardButton(text="Кот")
+    e2 = types.KeyboardButton(text="Девочка")
+    e3 = types.KeyboardButton(text="Улыбка")
+    startKBoard.add(e1,e2,e3)
     bot.send_message(message.chat.id, "Что хочешь увидеть сегодня?", reply_markup=startKBoard)
 
-photo1 = open('Девочка.jpg', 'e1')
-bot.send_photo(chat_id, photo1)
-photo2 = open('Кот.jfif', 'e2')
-bot.send_photo(chat_id, photo2)
-photo3 = open('котомем.jpeg', 'e3')
-bot.send_photo(chat_id, photo3)
+@bot.message_handler(func=lambda m: m.text == 'Мем')
+def echo_all(message):
+    photo = open('tmp/Девочка.jpg', 'rb')
+    bot.send_photo(message.chat.id, photo, "Конечно")
 
+@bot.message_handler(func=lambda m: m.text == 'Кот')
+def echo_all(message):
+    photo = open('tmp/Кот.jfif', 'rb')
+    bot.send_photo(message.chat.id, photo, "Мило:З")
 
-    bot.send_photo(message.chat_id, "привет")
+@bot.message_handler(func=lambda m: m.text == 'Улыбка')
+def echo_all(message):
+    photo = open('tmp/котомем.jpeg', 'rb')
+    bot.send_photo(message.chat.id, photo, "Получай")
+
 
 bot.polling()
