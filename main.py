@@ -29,9 +29,14 @@ def echo_all(message):
     e12 = types.KeyboardButton(text="Белый перец")
     e13 = types.KeyboardButton(text="Зеленый перец")
     e14 = types.KeyboardButton(text="Хмели-сунели")
-    startKBoard.add(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14)
+    e15 = types.KeyboardButton(text="Бархатцы.")
+    startKBoard.add(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15)
     bot.send_message(message.chat.id, "Что хочешь увидеть сегодня?", reply_markup=startKBoard)
-
+    
+@bot.message_handler(func=lambda m: m.text == 'Бархатцы.')
+def echo_all(message):
+    photo = open('Бархатцы.jpe', 'rb')
+    bot.send_photo(message.chat.id, photo, "Состав: бархатцы сушеные")
 
 @bot.message_handler(func=lambda m: m.text == 'Чёрный перец горошком')
 def echo_all(message):
@@ -43,7 +48,6 @@ def echo_all(message):
     photo = open('тоскана.jpg', 'rb')
     bot.send_photo(message.chat.id, photo, "Состав: Хлопья томатов(томатная паста, кукурузный крахмал) соль йодированая,"
                                            " базилик,чеснок,орегано,лук,петрушка." )
-
 @bot.message_handler(func=lambda m: m.text == 'Чёрный перец молотый')
 def echo_all(message):
     photo = open('черн.молот.jpg', 'rb')
@@ -54,13 +58,11 @@ def echo_all(message):
     photo = open('карри.jpg', 'rb')
     bot.send_photo(message.chat.id, photo, "Состав: кориандр, куркума, фенугрек, перец чёрный молотый,кумин, имбирь, "
                                            "корица, гвоздика, чили, мускатный орех, фенхель, горчица,кардамон.")
-
 @bot.message_handler(func=lambda m: m.text == 'Универсальная смесь специй')
 def echo_all(message):
     photo = open('индия.jpg', 'rb')
     bot.send_photo(message.chat.id, photo, "Состав: кориандр, красный перец чили, кумин, куркума, имбирь, черный перец,"
                                            " горчица, фенхель, листья пажитника, чеснок, лук, мускусная дыня, черный кардамон, корица, гвоздика, мускатный цвет, мускатный орех, зеленый кардамон, асафетида.")
-
 @bot.message_handler(func=lambda m: m.text == 'Корица молотая')
 def echo_all(message):
     photo = open('корица.jpg', 'rb')
@@ -106,5 +108,4 @@ def echo_all(message):
     photo = open('хмели сунели.jpg', 'rb')
     bot.send_photo(message.chat.id, photo, "Состав: чеснок, горчица, майоран, розмарин, соль, кориандр, базилик, тмин, "
                                            "тимьян, морковь, перец чили, паприка сладкая, мята, шалфей, лавровый лист")
-
 bot.polling()
